@@ -25,7 +25,8 @@ function askQuestion(question, callback) {
 }
 
 function evaluateQuestion (answer) {
-    word.guessLetter(answer);
+    var upperCaseAnswer = answer.toUpperCase();
+    word.guessLetter(upperCaseAnswer);
     console.log(word.current());
 
     if (word.isGuessed() === false) {
