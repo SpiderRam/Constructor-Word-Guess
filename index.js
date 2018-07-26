@@ -16,13 +16,13 @@ for (var i = 0; i < candidateWord.length; i++) {
     var letter = candidateWord[i];
     var letterObject = new Letter(letter);
     letterObjects.push(letterObject);
-}
+};
 
 word = new Word(letterObjects);
 
 function askQuestion(question, callback) {
     interface.question(question, callback);
-}
+};
 
 function evaluateQuestion (answer) {
     var upperCaseAnswer = answer.toUpperCase();
@@ -34,8 +34,8 @@ function evaluateQuestion (answer) {
     } else {
         console.log("Great job!")
         interface.close();
-    }
-}
+    };
+};
 
 console.log(word.current());
 askQuestion("Guess letter (then hit ENTER)", evaluateQuestion);

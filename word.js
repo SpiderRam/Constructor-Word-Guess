@@ -11,13 +11,13 @@ function Word(letters) {
             currentState += this.letters[i].returnCharacter(); // returns either '_' or character
         }
         return currentState;
-    }
+    };
 
     this.guessLetter = function(character) {
         for (var i = 0; i < this.letters.length; i++) {
             this.letters[i].checkCharacter(character);
         }
-    }
+    };
 
     this.isGuessed = function() {
         var guessed = true;
@@ -30,7 +30,7 @@ function Word(letters) {
         }
 
         return guessed;
-    }
-}
+    };
+};
 
 module.exports = Word;
