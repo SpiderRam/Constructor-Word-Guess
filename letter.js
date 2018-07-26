@@ -4,7 +4,7 @@ function Letter(character) {
 
     this.returnCharacter = function() {       
         if (this.letterHasBeenGuessedCorrectly === false) {
-            return "_";
+            return "_ ";
         } else {
             return this.character;
         }     

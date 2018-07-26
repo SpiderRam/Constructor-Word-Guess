@@ -1,15 +1,44 @@
 var Word = require("./word.js");
+var readline = require("readline");
 var Letter = require("./letter.js");
 
-var wordToGuess = "translate";
+var interface = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+var wordArray = ["JAVASCRIPT", "HYPERTEXT", "DATABASE", "EXPRESS", "CASCADING", "RECURSION", "INTERFACE", "CALLBACK", "CLIENT", "JQUERY"];
+var candidateWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+var word = {};
 var letterObjects = [];
 
-for (var i = 0; i < wordToGuess.length; i++) {
-    var letter = wordToGuess[i];
+for (var i = 0; i < candidateWord.length; i++) {
+    var letter = candidateWord[i];
     var letterObject = new Letter(letter);
     letterObjects.push(letterObject);
 }
 
-var word = new Word(letterObjects);
+word = new Word(letterObjects);
 
-console.log(word.current()); // _ _ _ _ _ 
+function askQuestion(question, callback) {
+    interface.question(question, callback);
+}
+
+function evaluateQuestion (answer) {
+    word.guessLetter(answer);
+    console.log(word.current());
+
+    if (word.isGuessed() === false) {
+        askQuestion("Guess letter (then hit ENTER)", evaluateQuestion);
+    } else {
+        console.log("Great job!")
+        interface.close();
+    }
+}
+
+console.log(word.current());
+askQuestion("Guess letter (then hit ENTER)", evaluateQuestion);
+
+
+
+
