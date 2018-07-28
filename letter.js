@@ -10,8 +10,8 @@ function Letter(character) {
         }     
     };
 
-    this.checkCharacter = function(character) {
-        if (this.character === character) {
+    this.checkCharacter = function(char) {
+        if (this.character === char) {
             this.letterHasBeenGuessedCorrectly = true;
         }
     };
